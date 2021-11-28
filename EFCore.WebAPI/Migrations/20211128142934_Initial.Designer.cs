@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EFCore.WebAPI.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20211128135052_Initial")]
+    [Migration("20211128142934_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,7 +27,7 @@ namespace EFCore.WebAPI.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("HeroiId");
+                    b.Property<int?>("HeroiId");
 
                     b.Property<string>("Nome");
 
@@ -63,7 +63,7 @@ namespace EFCore.WebAPI.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("BatalhaId");
+                    b.Property<int?>("BatalhaId");
 
                     b.Property<string>("Nome");
 
@@ -78,16 +78,14 @@ namespace EFCore.WebAPI.Migrations
                 {
                     b.HasOne("EFCore.WebAPI.Model.Heroi", "Heroi")
                         .WithMany()
-                        .HasForeignKey("HeroiId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("HeroiId");
                 });
 
             modelBuilder.Entity("EFCore.WebAPI.Model.Heroi", b =>
                 {
                     b.HasOne("EFCore.WebAPI.Model.Batalha", "Batalha")
                         .WithMany()
-                        .HasForeignKey("BatalhaId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("BatalhaId");
                 });
 #pragma warning restore 612, 618
         }

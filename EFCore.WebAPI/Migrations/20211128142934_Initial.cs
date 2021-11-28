@@ -31,7 +31,7 @@ namespace EFCore.WebAPI.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Nome = table.Column<string>(nullable: true),
-                    BatalhaId = table.Column<int>(nullable: false)
+                    BatalhaId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -41,7 +41,7 @@ namespace EFCore.WebAPI.Migrations
                         column: x => x.BatalhaId,
                         principalTable: "Batalhas",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -51,7 +51,7 @@ namespace EFCore.WebAPI.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Nome = table.Column<string>(nullable: true),
-                    HeroiId = table.Column<int>(nullable: false)
+                    HeroiId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -61,7 +61,7 @@ namespace EFCore.WebAPI.Migrations
                         column: x => x.HeroiId,
                         principalTable: "Herois",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
