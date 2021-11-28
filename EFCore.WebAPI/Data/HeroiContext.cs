@@ -14,6 +14,7 @@ namespace EFCore.WebAPI.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(@"Password=bru12051;Persist Security Info=True;User ID=sa;Initial Catalog=HeroApp;Data Source=.\");
+            
         }
 
 
